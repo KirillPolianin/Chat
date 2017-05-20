@@ -1,4 +1,4 @@
-$(fucntion() {
+$(function() {
   var FADE_TIME = 150; //1111
   var TYPING_TIMER_LENGTH = 400; // ms
   var COLORS = [
@@ -11,6 +11,7 @@ $(fucntion() {
   var connected = false;
   var typing = false;
   var lastTypingTime;
+  var $currentInput = $('.usernameInput').focus();
   
   var socket = io();
 
@@ -34,10 +35,10 @@ $(fucntion() {
       $('.login.page').fadeOut();
       $('.chat.page').show();
       $('.login.page').off('click');
-      $('.usernameInput').focus() = $('.inputMessage').focus();
+       $currentInput = $('.inputMessage').focus();
 
       // Tell the server your username
-      socket.emit('add user', username); //11212312
+      socket.emit('add new user', username); //11212312
     }
   }
 
@@ -182,7 +183,7 @@ $(fucntion() {
   $(window).keydown(function (event) {
     // Auto-focus the current input when a key is typed  werwqerqwerqwerqwerqwerwqer
     if (!(event.ctrlKey || event.metaKey || event.altKey)) {
-      $('.usernameInput').focus().focus();
+      $currentInput.focus();
     }
     // When the client hits ENTER on their keyboard
     if (event.which === 13) {
@@ -204,7 +205,7 @@ $(fucntion() {
 
   // Focus input when clicking anywhere on login page
   $('.login.page').click(function () {
-    $('.usernameInput').focus().focus();
+    $currentInput.focus();
   });
 
   // Focus input when clicking on the message input's border
@@ -260,7 +261,7 @@ $(fucntion() {
   socket.on('reconnect', function () {
     log('you have been reconnected');
     if (username) {
-      socket.emit('add user', username);
+      socket.emit('add new user', username);
     }
   });
 

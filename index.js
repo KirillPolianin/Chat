@@ -1,4 +1,5 @@
-var app = require('express')();
+var express = require('express'); // Get the module
+var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
@@ -6,9 +7,9 @@ var port = process.env.PORT || 3000;
 //routing
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function(req, res){
+/*app.get('/', function(req, res){
   res.sendFile(__dirname + '/public/index.html');
-});
+});*/
 
 
 var numberOfUsers = 0;
@@ -17,7 +18,7 @@ io.on('connection', function(socket){
     var newUser = false;
     
     socket.on('chat message', function(msg) {
-        io.broadcast.emit('chat message', {
+        socket.broadcast.emit('chat message', {
             username: socket.username,
             message: msg
         });
@@ -31,10 +32,10 @@ io.on('connection', function(socket){
         ++numberOfUsers;
         newUser = true;
         socket.emit('login', {
-           numberOfUser: numberOfUsers 
+           numberOfUsers: numberOfUsers 
         });
         
-        socket.broadcast.emit('user has joined chat', {
+        socket.broadcast.emit('user joined', {
             username: socket.username,
             numberOfUsers: numberOfUsers
         });
