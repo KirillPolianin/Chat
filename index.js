@@ -6,9 +6,9 @@ var port = process.env.PORT || 3000;
 //routing
 app.use(express.static(__dirname + '/public'));
 
-/*app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});*/
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/public/index.html');
+});
 
 
 var numberOfUsers = 0;
@@ -16,7 +16,7 @@ var numberOfUsers = 0;
 io.on('connection', function(socket){
     var newUser = false;
     
-    socket.on('chat message', function(msg){
+    socket.on('chat message', function(msg) {
         io.broadcast.emit('chat message', {
             username: socket.username,
             message: msg
@@ -46,7 +46,7 @@ io.on('connection', function(socket){
        }); 
     });
     
-    socket.on('stop typing', fucntion () {
+    socket.on('stop typing', function () {
         socket.broadcast.emit('stop typing', {
               username: socket.username
         });          
