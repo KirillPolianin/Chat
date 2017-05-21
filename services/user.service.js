@@ -14,6 +14,7 @@ service.getById = getById;
 service.create = create;
 service.update = update;
 service.delete = _delete;
+service.getAll = getAll;
 
 module.exports = service;
 
@@ -151,6 +152,24 @@ function _delete(_id) {
 
             deferred.resolve();
         });
+
+    return deferred.promise;
+}
+
+function getAll() {
+    var deferred = Q.defer();
+
+    db.users.find({}, {fields: {hash: 0}}).toArray(function (err, users) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+
+        if (users) {
+
+            deferred.resolve(_.omit(users));
+        } else {
+            // user not found
+            deferred.resolve();
+        }
+    });
 
     return deferred.promise;
 }
