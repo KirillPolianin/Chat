@@ -1,5 +1,7 @@
 {
-    "connectionString": "mongodb://localhost:27017/mean-stack-registration-login-example",
+    
+    "connectionString": "mongodb://chatik:passwordtochatik@ds149511.mlab.com:49511/frdchat",
+    
     "apiUrl": "http://localhost:3000/api",
     "secret": "__"
 }

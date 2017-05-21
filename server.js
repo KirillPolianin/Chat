@@ -6,7 +6,7 @@ var io = require('socket.io')(http);
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
-var config = require('config.json')
+var config = require('config.json');
 var port = process.env.PORT || 3000;
 
 
@@ -24,11 +24,6 @@ app.use('/login', require('./controllers/login.controller'));
 app.use('/register', require('./controllers/register.controller'));
 app.use('/app', require('./controllers/app.controller'));
 app.use('/api/users', require('./controllers/api/users.controller'));
-
-// make '/app' default route
-app.get('/', function (req, res) {
-    return res.redirect('/app');
-});
 
 //routing
 //app.use(express.static(__dirname + '/public'));
@@ -60,6 +55,9 @@ io.on('connection', function(socket){
 
         
         socket.username = username;
+       
+       console.log(username);
+       
         ++numberOfUsers;
         newUser = true;
         socket.emit('login', {

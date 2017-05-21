@@ -29,7 +29,8 @@ $(function() {
   //Sets the user username
   function setUsername () {
     username = cleanInput($('.usernameInput').val().trim());
-
+    $('.usernameInput').focus();
+    //  username = vm.user.username;
     // If the username is valid
     if (username) {
       $('.login.page').fadeOut();

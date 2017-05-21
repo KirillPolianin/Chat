@@ -29,6 +29,7 @@ $(function() {
   //Sets the user username
   function setUsername () {
     username = cleanInput($('.usernameInput').val().trim());
+      console.log(username);
 
     // If the username is valid
     if (username) {
