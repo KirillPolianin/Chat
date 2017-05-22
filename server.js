@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
 var config = require('config.json');
 var port = process.env.PORT || 3000;
+var path = require('path');
 
 
 app.set('view engine', 'ejs');
@@ -35,6 +36,10 @@ app.use('/api/users', require('./controllers/api/users.controller'));
 // make '/app' default route
 app.get('/', function (req, res) {
     return res.redirect('/app');
+});
+app.get('/chat', function (req, res) {
+    
+     res.sendFile(path.join(__dirname + '/app/home/chat.html'));
 });
 
 var numberOfUsers = 0;

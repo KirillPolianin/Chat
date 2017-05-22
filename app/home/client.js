@@ -6,6 +6,8 @@ $(function() {
     '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
     '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
   ];
+    
+
   
   var username;
   var connected = false;
@@ -19,9 +21,9 @@ $(function() {
   function printNumberOfUsers (msg) {
     var message = '';
     if (msg.numberOfUsers === 1) {
-      message += "there's 1 person in chat";
+      message += "1 person online";
     } else {
-      message += "there are " + msg.numberOfUsers + " people in chat";
+      message += msg.numberOfUsers + " people online";
     }
     log(message);
   }
@@ -65,6 +67,9 @@ $(function() {
     var $el = $('<li>').addClass('log').text(message);
     addMessageElement($el, options);
   }
+    
+    
+    
 
    // Adds the visual chat message to the message list
   function addChatMessage (msg, options) {
@@ -186,6 +191,7 @@ $(function() {
     if (!(event.ctrlKey || event.metaKey || event.altKey)) {
       $currentInput.focus();
     }
+ 
     // When the client hits ENTER on their keyboard
     if (event.which === 13) {
       if (username) {
@@ -213,6 +219,12 @@ $(function() {
   $('.inputMessage').click(function () {
     $('.inputMessage').focus();
   });
+    
+  $('#btn-chat').on('click', function(){
+       sendMessage();
+        socket.emit('stop typing');
+        typing = false;
+  });
 
   // Socket events
 
@@ -220,7 +232,7 @@ $(function() {
   socket.on('login', function (msg) {
     connected = true;
     // Display the welcome message
-    var message = "Welcome to Juhani's Chat – ";
+    var message = "Welcome to Juhani's Chat";
     log(message, {
       prepend: true
     });
@@ -236,6 +248,7 @@ $(function() {
   socket.on('user joined', function (msg) {
     log(msg.username + ' joined');
     printNumberOfUsers(msg);
+      
   });
 
   // Whenever the server emits 'user left', log it in the chat body

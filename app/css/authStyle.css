@@ -1,5 +1,11 @@
 body {
     padding: 0;
+    margin: 0;
+    background: white; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(white, #667399); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, #667399); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, #667399); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, #667399); /* Standard syntax */
 }
 
 
@@ -31,7 +37,7 @@ html, input {
 }
 
 html, body {
-  height: 100%;
+      height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -44,10 +50,10 @@ ul {
 /* Pages */
 
 .pages {
-  height: 100%;
   margin: 0;
   padding: 0;
   width: 100%;
+      height: 100%;
 }
 
 .page {
@@ -59,7 +65,7 @@ ul {
 /* Login Page */
 
 .login.page {
-  background-color: #000;
+  background-color: #667399;
 }
 
 .login.page .form {
@@ -79,15 +85,20 @@ ul {
   outline: none;
   padding-bottom: 15px;
   text-align: center;
-  width: 400px;
+  width:100%;
 }
 
 .login.page .title {
   font-size: 200%;
+    border-top: 2px solid #fff;
+    padding-top: 30px;
+    width:100%;
+    text-align: center;
 }
 
 .login.page .usernameInput {
   font-size: 200%;
+    width:100%;
   letter-spacing: 3px;
 }
 
@@ -113,7 +124,7 @@ ul {
 }
 
 .log {
-  color: gray;
+  color: black;
   font-size: 70%;
   margin: 5px;
   text-align: center;
@@ -122,8 +133,8 @@ ul {
 /* Messages */
 
 .chatArea {
-  height: 100%;
-  padding-bottom: 60px;
+  height: 90%;
+ 
 }
 
 .messages {
@@ -146,32 +157,64 @@ ul {
 
 /* Input */
 
-.inputMessage {
-  border: 10px solid #000;
-  bottom: 0;
-  height: 60px;
-  left: 0;
-  outline: none;
-  padding-left: 10px;
-  position: absolute;
-  right: 0;
-  width: 100%;
-}
+
 
 .container{
-    padding: 0;
-    margin: 0
-    
+    padding:0;
+    margin: 0;
+    width: 100%;
 }
 .form-container{
     margin:20px;
 }
 
 h1{
-    margin-left:20px;
+    margin-left:5%;
     
 }
 .nav nav-tabs{
     background-color: #000;
+
     
 }
+.online_users{
+    margin-left:30px;
+    margin-top: 10px;
+}
+
+.chatbutton {
+    text-align:center;
+    margin-top: 15%;
+    
+}
+
+
+
+.btn-xl {
+    padding: 10px 20px;
+    margin-top:30px;
+    font-size: 70px;
+    border-radius: 20px;
+    background-color: #667399;
+    color:aliceblue;
+    border-color: #667399;
+}
+
+
+.panel-footer{
+    height: 10%;
+    margin:0;
+    padding-bottom:5px;
+    background-color: transparent;
+    border-color:transparent;
+}
+.input-group{
+    margin: 0;
+    padding: 0;
+}
+
+.form-control input-sm inputMessage{
+    width: 70%;
+
+}
+

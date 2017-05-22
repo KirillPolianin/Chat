@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Juhani's chat</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="app/css/authStyle.css">
+</head>
+<body>
+  <ul class="pages">
+    <li class="chat page">
+      <div class="chatArea">
+        <ul class="messages"></ul>
+      </div>
+      <div class="panel-footer">
+      <div class="input-group">
+            <input id="btn-input" type="text" class="form-control input-sm inputMessage" placeholder="Your message..." />
+            <span class="input-group-btn">
+                <button class="btn btn-warning btn-sm" id="btn-chat">
+                                Send</button>
+            </span>
+        </div>
+        </div>
+    
+    </li>
+    <li class="login page">
+      <div class="form">
+        <h3 class="title">Type your chat nickname...</h3>
+        <input class="usernameInput" type="text" maxlength="14" ng-model="vm.user.username" />
+      </div>
+    </li>
+  </ul>
+
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app/home/client.js"></script>
+
+</body>
+</html>
