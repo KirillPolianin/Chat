@@ -1,5 +1,5 @@
 
-//home/index.controller.js
+// *** home/index.controller.js
 
 (function () {
     'use strict';
@@ -16,7 +16,7 @@
         initController();
 
         function initController() {
-            // get current user
+            // getting the current user
             UserService.GetCurrent().then(function (user) {
                 vm.user = user;
             });

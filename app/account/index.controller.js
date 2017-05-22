@@ -16,13 +16,13 @@
         initController();
  
         function initController() {
-            // get current user
+            // getting the current user
             UserService.GetCurrent().then(function (user) {
                 vm.user = user;
             });
         }
  
-        //save user
+        // saving user
         function saveUser() {
             UserService.Update(vm.user)
                 .then(function () {
@@ -33,7 +33,7 @@
                 });
         }
         
-        //delete user
+        // deleting user
         function deleteUser() {
             UserService.Delete(vm.user._id)
                 .then(function () {

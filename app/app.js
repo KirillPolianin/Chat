@@ -5,7 +5,7 @@
         .module('app', ['ui.router'])
         .config(config)
         .run(run);
-    //defines the routes of application using angular ui router
+    //defining the routes of application using angular ui router
     function config($stateProvider, $urlRouterProvider) {
         // default route
         $urlRouterProvider.otherwise("/");
